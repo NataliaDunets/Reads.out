@@ -16,12 +16,13 @@ public class LogFileReader {
 			throws IOException {
 		LineNumberReader lnr = new LineNumberReader(new FileReader(fileName));
 		String line;
+		// ArrayList<String> list= new ArrayList();
 		int i = 1;
-		while ((line = lnr.readLine()) != null && i <= startLineNumber + linesCount) {
-			if(i>startLineNumber)
-			{
-				System.out.println(line);
-			}
+		lnr.setLineNumber(startLineNumber);
+		System.out.println(lnr.getLineNumber());
+		System.out.println();
+		while ((line = lnr.readLine()) != null && i <= linesCount) {
+			System.out.println(line);
 			i++;
 		}
 		lnr.close();
@@ -31,6 +32,9 @@ public class LogFileReader {
 		int startLineNumber = Integer.parseInt(args[0]);
 		int linesCount = Integer.parseInt(args[1]);
 		String fileName = args[2];
+		System.out.println(startLineNumber);
+		System.out.println(linesCount);
+		System.out.println(fileName);
 		if (fileExists(fileName)) {
 			read(startLineNumber, linesCount, fileName);
 		} else {
