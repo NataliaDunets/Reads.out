@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import parser.LogFileRecord;
 
 public class LogFileReader {
 
@@ -16,13 +17,12 @@ public class LogFileReader {
 			throws IOException {
 		LineNumberReader lnr = new LineNumberReader(new FileReader(fileName));
 		String line;
-		// ArrayList<String> list= new ArrayList();
 		int i = 1;
-		lnr.setLineNumber(startLineNumber);
-		System.out.println(lnr.getLineNumber());
-		System.out.println();
-		while ((line = lnr.readLine()) != null && i <= linesCount) {
-			System.out.println(line);
+		while ((line = lnr.readLine()) != null
+				&& i < startLineNumber + linesCount) {
+			if (i >= startLineNumber) {
+				LogFileRecord.parseLine(line);
+			}
 			i++;
 		}
 		lnr.close();
