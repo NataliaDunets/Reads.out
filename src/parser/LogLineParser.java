@@ -9,8 +9,8 @@ public class LogLineParser {
 		lfr.setHttpMethod(parse[2]);
 		lfr.setPath(parse[3]);
 		lfr.setProtocolVersion(parse[4]);
-		lfr.setHttpReplyCode(parse[5]);
-		lfr.setBytesTransferred(parse[6]);
+		lfr.setHttpReplyCode(Integer.parseInt(parse[5]));
+		lfr.setBytesTransferred(Integer.parseInt(parse[6]));
 		return lfr;
 	}
 }

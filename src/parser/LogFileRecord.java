@@ -5,8 +5,8 @@ public class LogFileRecord {
 	static String date; // DD: HH: MM: SS (24 hour)
 	static String httpMethod; 
 	static String protocolVersion;
-	static String bytesTransferred;
-	static String httpReplyCode;
+	static Integer bytesTransferred;
+	static Integer httpReplyCode;
 	static String path;
 
 	public String getPath() {
@@ -17,11 +17,11 @@ public class LogFileRecord {
 		LogFileRecord.path = path;
 	}
 
-	public String getHttpReplyCode() {
+	public Integer getHttpReplyCode() {
 		return httpReplyCode;
 	}
 
-	public void setHttpReplyCode(String httpReplyCode) {
+	public void setHttpReplyCode(Integer httpReplyCode) {
 		LogFileRecord.httpReplyCode = httpReplyCode;
 	}
 
@@ -57,11 +57,11 @@ public class LogFileRecord {
 		LogFileRecord.protocolVersion = protocolVersion;
 	}
 
-	public String getBytesTransferred() {
+	public Integer getBytesTransferred() {
 		return bytesTransferred;
 	}
 
-	public void setBytesTransferred(String bytesTransferred) {
+	public void setBytesTransferred(Integer bytesTransferred) {
 		LogFileRecord.bytesTransferred = bytesTransferred;
 	}
 
