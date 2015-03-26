@@ -1,45 +1,28 @@
 package parser;
 
 public class LogFileRecord {
-	static String host; // Имя хоста или адрес в Интернете
-	static String date; //DD: HH: MM: SS (24 hour)
-	static String request; // запрос
-	static String httpReply;// ответ
-	static String bytes; // кол-во байт
-	static String x200; //не помню, что это означает
-	static String name;
-	
-	public LogFileRecord()
-	{
-		
-	}
-	
-	public LogFileRecord(String host, String date, String request,
-			String httpReply, String bytes, String x200, String name) {
-		super();
-		LogFileRecord.host = host;
-		LogFileRecord.date = date;
-		LogFileRecord.request = request;
-		LogFileRecord.httpReply = httpReply;
-		LogFileRecord.bytes = bytes;
-		LogFileRecord.x200 = x200;
-		LogFileRecord.name = name;
-	}
-	public static String getName() {
-		return name;
+	static String host;
+	static String date; // DD: HH: MM: SS (24 hour)
+	static String httpMethod; 
+	static String protocolVersion;
+	static String bytesTransferred;
+	static String httpReplyCode;
+	static String path;
+
+	public String getPath() {
+		return path;
 	}
 
-	public static void setName(String name) {
-		LogFileRecord.name = name;
+	public void setPath(String path) {
+		LogFileRecord.path = path;
 	}
 
-	
-	public static String getX200() {
-		return x200;
+	public String getHttpReplyCode() {
+		return httpReplyCode;
 	}
 
-	public static void setX200(String x200) {
-		LogFileRecord.x200 = x200;
+	public void setHttpReplyCode(String httpReplyCode) {
+		LogFileRecord.httpReplyCode = httpReplyCode;
 	}
 
 	public String getHost() {
@@ -58,41 +41,34 @@ public class LogFileRecord {
 		LogFileRecord.date = date;
 	}
 
-	public String getRequest() {
-		return request;
+	public String getHttpMethod() {
+		return httpMethod;
 	}
 
-	public void setRequest(String request) {
-		LogFileRecord.request = request;
+	public void setHttpMethod(String httpMethod) {
+		LogFileRecord.httpMethod = httpMethod;
 	}
 
-	public String getHttpReply() {
-		return httpReply;
+	public String getProtocolVersion() {
+		return protocolVersion;
 	}
 
-	public void setHttpReply(String httpReply) {
-		LogFileRecord.httpReply = httpReply;
+	public void setProtocolVersion(String protocolVersion) {
+		LogFileRecord.protocolVersion = protocolVersion;
 	}
 
-	public String getBytes() {
-		return bytes;
+	public String getBytesTransferred() {
+		return bytesTransferred;
 	}
 
-	public void setBytes(String bytes) {
-		LogFileRecord.bytes = bytes;
+	public void setBytesTransferred(String bytesTransferred) {
+		LogFileRecord.bytesTransferred = bytesTransferred;
 	}
 
-	public static void parseLine(String line) {
-		String[] parse = line.split("[\\s\\[\\]\"]+");
-		LogFileRecord lfr = new LogFileRecord();
-		host  = parse[0];
-		date = parse[1];
-		request = parse[2];
-		name = parse[3];
-		httpReply = parse[4];
-		x200 = parse[5];
-		bytes = parse[6];
-		System.out.print(lfr);
-		System.out.println();
+	public String ToString() {
+		return getHost() + "	" + getDate() + "	" + getHttpMethod() + "	"
+				+ getProtocolVersion() + "	" + getBytesTransferred() + "	"
+				+ getHttpReplyCode() + "	" + getPath();
 	}
+
 }

@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
-import parser.LogFileRecord;
+import parser.LogLineParser;
+import parser.LogRecordPrinter;
 
 public class LogFileReader {
 
@@ -21,7 +22,7 @@ public class LogFileReader {
 		while ((line = lnr.readLine()) != null
 				&& i < startLineNumber + linesCount) {
 			if (i >= startLineNumber) {
-				LogFileRecord.parseLine(line);
+				LogRecordPrinter.printer(LogLineParser.parseLine(line));
 			}
 			i++;
 		}
